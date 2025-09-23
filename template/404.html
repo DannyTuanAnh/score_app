@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block title %}Trang không tìm thấy - 404{% endblock
+%} {% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6 text-center">
+    <div class="card">
+      <div class="card-body">
+        <i class="fas fa-exclamation-triangle fa-5x text-warning mb-4"></i>
+        <h1 class="display-4 text-muted">404</h1>
+        <h3>Trang không tìm thấy</h3>
+        <p class="lead">Xin lỗi, trang bạn đang tìm kiếm không tồn tại.</p>
+        <hr />
+        <a href="/" class="btn btn-primary">
+          <i class="fas fa-home"></i> Về trang chủ
+        </a>
+        <a href="/scores" class="btn btn-outline-info">
+          <i class="fas fa-list"></i> Xem điểm
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

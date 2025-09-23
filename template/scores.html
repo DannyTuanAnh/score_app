@@ -1,0 +1,140 @@
+{% extends "base.html" %} {% block title %}Xem điểm - Hệ thống quản lý điểm{%
+endblock %} {% block content %}
+<div class="row">
+  <div class="col-12">
+    <h2><i class="fas fa-list text-info"></i> Xem điểm theo lớp</h2>
+    <hr />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header bg-info text-white">
+        <h5><i class="fas fa-search"></i> Tìm kiếm</h5>
+      </div>
+      <div class="card-body">
+        <form id="searchForm">
+          <div class="mb-3">
+            <label for="classId" class="form-label">Mã lớp:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="classId"
+              placeholder="Nhập mã lớp (ví dụ: 12A1)"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-info">
+            <i class="fas fa-search"></i> Tìm kiếm
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            onclick="clearResults()"
+          >
+            <i class="fas fa-times"></i> Xóa kết quả
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header bg-secondary text-white">
+        <h5><i class="fas fa-info-circle"></i> Hướng dẫn</h5>
+      </div>
+      <div class="card-body">
+        <ul class="list-unstyled">
+          <li>
+            <i class="fas fa-check text-success"></i> Nhập mã lớp để xem danh
+            sách điểm
+          </li>
+          <li>
+            <i class="fas fa-check text-success"></i> Kết quả hiển thị thông tin
+            chi tiết
+          </li>
+          <li>
+            <i class="fas fa-check text-success"></i> Có thể chỉnh sửa điểm trên
+            RAM, sau đó xác nhận để lưu vào hệ thống
+          </li>
+          <li>
+            <i class="fas fa-check text-success"></i> Tìm kiếm nhanh theo mã học
+            sinh nhờ dict map, không cần gọi api
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-12">
+    <div id="loadingSpinner" class="text-center d-none">
+      <div class="spinner-border text-info" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-2">Đang tải dữ liệu...</p>
+    </div>
+
+    <div id="resultsContainer" class="d-none">
+      <div class="card">
+        <div
+          class="card-header bg-success text-white d-flex justify-content-between align-items-center"
+        >
+          <h5><i class="fas fa-table"></i> Kết quả tìm kiếm</h5>
+          <form id="searchStudent" class="d-flex align-items-center gap-2 mb-0">
+            <label for="studentId" class="form-label mb-0 text-nowrap"
+              >Mã học sinh:</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="studentId"
+              placeholder="Nhập mã học sinh..."
+              style="min-width: 200px"
+            />
+            <button type="submit" class="btn btn-info btn-sm text-nowrap">
+              <i class="fas fa-search"></i> Tìm
+            </button>
+          </form>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table
+              class="table table-striped table-hover mb-0"
+              id="scoresTable"
+            >
+              <thead class="table-dark">
+                <tr>
+                  <th><i class="fas fa-user"></i> Mã học sinh</th>
+                  <th><i class="fas fa-user-tag"></i> Họ tên</th>
+                  <th><i class="fas fa-star"></i> Điểm</th>
+                  <th><i class="fas fa-calendar"></i> Ngày cập nhật</th>
+                  <th><i class="fas fa-code-branch"></i> Version</th>
+                  <th><i class="fas fa-marker"></i> Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="scoresTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            <i class="fas fa-info-circle"></i>
+            Tổng số: <span id="totalRecords">0</span> học sinh
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div id="noResults" class="alert alert-warning d-none">
+      <i class="fas fa-exclamation-triangle"></i>
+      Không tìm thấy dữ liệu điểm cho lớp này.
+    </div>
+  </div>
+</div>
+{% endblock %} {% block extra_js %}
+<script src="{{ url_for('static', filename='js/scores.js') }}"></script>
+{% endblock %}

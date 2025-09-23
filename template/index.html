@@ -1,0 +1,68 @@
+{% extends "base.html" %} {% block title %}Trang chủ - Hệ thống quản lý điểm{%
+endblock %} {% block content %}
+<div class="row">
+  <div class="col-12">
+    <div class="jumbotron bg-light p-5 rounded">
+      <h1 class="display-4">
+        <i class="fas fa-graduation-cap text-primary"></i>
+        Hệ thống quản lý điểm
+      </h1>
+      <p class="lead">
+        Chào mừng bạn đến với hệ thống quản lý điểm học sinh hiện đại và tiện
+        lợi.
+      </p>
+      <hr class="my-4" />
+      <p>
+        Hệ thống hỗ trợ xem điểm theo lớp, cập nhật điểm hàng loạt với cơ chế
+        phát hiện xung đột.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <div class="card h-100">
+      <div class="card-body text-center">
+        <i class="fas fa-list fa-3x text-info mb-3"></i>
+        <h5 class="card-title">Xem điểm theo lớp</h5>
+        <p class="card-text">
+          Tra cứu và hiển thị danh sách điểm của tất cả học sinh trong lớp. Cập
+          nhật điểm cho học sinh với cơ chế kiểm tra xung đột.
+        </p>
+        <p class="card-text"></p>
+        <a href="/scores" class="btn btn-info">
+          <i class="fas fa-search"></i> Xem điểm
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div>
+      <div class="alert alert-info">
+        <h6><i class="fas fa-info-circle"></i> Tính năng nổi bật:</h6>
+        <ul class="mb-0">
+          <li>
+            <strong>Optimistic Locking:</strong> Phát hiện xung đột khi nhiều
+            người cùng chỉnh sửa
+          </li>
+          <li>
+            <strong>Batch Processing:</strong> Cập nhật hàng loạt với
+            transaction safety
+          </li>
+          <li>
+            <strong>Real-time Logging:</strong> Theo dõi tất cả hoạt động hệ
+            thống
+          </li>
+          <li>
+            <strong>Responsive Design:</strong> Giao diện thân thiện trên mọi
+            thiết bị
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
