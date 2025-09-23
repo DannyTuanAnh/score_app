@@ -12,8 +12,6 @@ app = Flask(__name__,
             template_folder='template',
             static_folder='static')
 
-# Cấu hình Flask
-app.config['SECRET_KEY'] = 'your-secret-key-here'  # Thay đổi trong production
 
 # Register blueprint
 app.register_blueprint(scores_bp, url_prefix='/api')
@@ -30,12 +28,6 @@ def scores_page():
     """Trang xem điểm"""
     logger.info("Rendering scores page")
     return render_template('scores.html')
-
-@app.route('/batch-update')
-def batch_update_page():
-    """Trang cập nhật điểm hàng loạt"""
-    logger.info("Rendering batch update page")
-    return render_template('batch-update.html')
 
 # Error handlers
 @app.errorhandler(404)
